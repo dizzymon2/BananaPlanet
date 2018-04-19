@@ -26,6 +26,7 @@ public class Shooter : MonoBehaviour
     public GameObject banana;
     public Rigidbody2D rb;
     public float force;
+    public GameObject shooter;
 
 
     // Use this for initialization
@@ -35,7 +36,7 @@ public class Shooter : MonoBehaviour
         lr = lineRenderer.GetComponent<LineRenderer>();
         rb = banana.GetComponent<Rigidbody2D>();
         swipeOK = true;
-        emptyVector2 = new Vector3(-500, 0, 0);
+        emptyVector2 = shooter.transform.position;//new Vector3(-500, 0, 0);
         player = mainCamera.GetComponent<Transform>();
     }
 
