@@ -19,7 +19,7 @@ public class Planet : MonoBehaviour
             body.GetComponent<Rigidbody2D>().AddForce(gravityUp *gravity*num);
 
             Quaternion targetRotation = Quaternion.FromToRotation(localUp, gravityUp) * body.rotation;
-            body.rotation = Quaternion.Slerp(body.rotation, targetRotation, 50f * Time.deltaTime);
+            body.rotation = Quaternion.Slerp(body.rotation, targetRotation, 50f /** Time.deltaTime*/);
         }
     }
 }

@@ -5,24 +5,27 @@ using UnityEngine;
 public class Planets : MonoBehaviour {
     public List<Planet> planets = new List<Planet>();
     public Player player;
+    public float gravityRadius;
+    [HideInInspector]
+    public float distance;
+    public Shooter shooter;
 	// Use this for initialization
-	void Start ()
-    {
-        //public Planet attractor;
-        //public Planet attractor2;
-        //public Planet attractor3;
-        //public Planet attractor4;
-        //attractor = GameObject.Find("Planet").GetComponent<Planet>();
-        //attractor2 = GameObject.Find("Planet").GetComponent<Planet>();
-        //attractor3 = GameObject.Find("Planet").GetComponent<Planet>();
-        //attractor4 = GameObject.Find("Planet").GetComponent<Planet>();
+	void Start (){
+
     }
 
-    // Update is called once per frame
     void Update () {
         for(int i=0;i<planets.Count;i++)
         {
-            planets[i].Attract(player.transform);
+            distance = Vector3.Distance(player.transform.position, planets[i].transform.position);
+            if(shooter.gameStart)
+            {
+                if (distance <= gravityRadius)
+                    shooter.gravityOK = true;
+                else
+                    shooter.gravityOK = false;
+                planets[i].Attract(player.transform);
+            }
         }
     }
 }
