@@ -286,6 +286,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Comet.cs" />
+    <Compile Include="Assets\Scripts\Gorilla.cs" />
+    <Compile Include="Assets\Scripts\GravityZone.cs" />
     <Compile Include="Assets\Scripts\Planet.cs" />
     <Compile Include="Assets\Scripts\Planets.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />

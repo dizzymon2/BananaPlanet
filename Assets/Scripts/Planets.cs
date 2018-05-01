@@ -9,6 +9,7 @@ public class Planets : MonoBehaviour {
     [HideInInspector]
     public float distance;
     public Shooter shooter;
+
 	// Use this for initialization
 	void Start (){
 
@@ -17,15 +18,15 @@ public class Planets : MonoBehaviour {
     void Update () {
         for(int i=0;i<planets.Count;i++)
         {
-            distance = Vector3.Distance(player.transform.position, planets[i].transform.position);
-            if(shooter.gameStart)
-            {
-                if (distance <= gravityRadius)
-                    shooter.gravityOK = true;
-                else
-                    shooter.gravityOK = false;
-                planets[i].Attract(player.transform);
-            }
+            //distance = Vector3.Distance(player.transform.position, planets[i].transform.position);
+            //if(shooter.gameStart)
+            //{
+            //    if (distance <= gravityRadius)
+            //        shooter.gravityOK = true;
+            //    else
+            //        shooter.gravityOK = false;
+            //    planets[i].Attract(player.transform);
+            //}
         }
     }
 }
