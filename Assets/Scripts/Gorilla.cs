@@ -5,12 +5,17 @@ using UnityEngine;
 public class Gorilla : MonoBehaviour {
     public List<Vector3> movingPoints = new List<Vector3>();
     public List<bool> boolPoints = new List<bool>();
+	private GorillaRenderer gR;
     public float gorillaSpeed=10;
     [HideInInspector]
     public bool start=true, end=false;
     // Use this for initialization
     void Start () {
         transform.position = movingPoints[0];
+		gR= GetComponent<GorillaRenderer> ();
+		print (movingPoints.Count );
+		gR.lr.positionCount = movingPoints.Count;
+		gR.lr.SetPositions (movingPoints.ToArray ());
     }
 
     // Update is called once per frame

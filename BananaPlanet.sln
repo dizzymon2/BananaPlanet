@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BananaPlanet", "BananaPlanet.csproj", "{191930F3-7ECF-7A06-4A22-F7D41E073004}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BananaPlanet", "Assembly-CSharp.csproj", "{F2A3D9E6-A360-2C33-035C-AEBCE5772FEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{191930F3-7ECF-7A06-4A22-F7D41E073004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{191930F3-7ECF-7A06-4A22-F7D41E073004}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{191930F3-7ECF-7A06-4A22-F7D41E073004}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{191930F3-7ECF-7A06-4A22-F7D41E073004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2A3D9E6-A360-2C33-035C-AEBCE5772FEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2A3D9E6-A360-2C33-035C-AEBCE5772FEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2A3D9E6-A360-2C33-035C-AEBCE5772FEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2A3D9E6-A360-2C33-035C-AEBCE5772FEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

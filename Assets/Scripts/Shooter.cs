@@ -29,7 +29,7 @@ public class Shooter : MonoBehaviour
     {
         if (swipeOK == true)
         {
-
+			
             if (Input.GetMouseButtonDown(0))
             {
                 gameStart = true;
@@ -60,6 +60,7 @@ public class Shooter : MonoBehaviour
                 endTouch = stopCamera.ScreenToWorldPoint(Input.mousePosition);
                 slingVector = startTouch - endTouch;
                 force = Mathf.Sqrt((slingVector.x) * (slingVector.x) + (slingVector.y) * (slingVector.y));
+				swipeOK = false;
             }
         }
 
