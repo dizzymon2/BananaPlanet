@@ -7,6 +7,10 @@ TagManager:
   - Planet
   - Goal
   - Wall
+  - Planet1
+  - Planet2
+  - Planet3
+  - MovablePlanet
   layers:
   - Default
   - TransparentFX

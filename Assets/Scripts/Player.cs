@@ -6,8 +6,8 @@ using System.Collections;
 public class Player: MonoBehaviour
 {
     public ParticleSystem explosion;
-    public GameObject complete;
-    public Planet goal;
+    public UnityEngine.GameObject complete;
+    public GameObject goal;
     void Start()
     {
         GetComponent<Rigidbody2D>().gravityScale = 0;

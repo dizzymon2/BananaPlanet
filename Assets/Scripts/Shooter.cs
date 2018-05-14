@@ -9,7 +9,7 @@ public class Shooter : MonoBehaviour
     public Camera stopCamera;
     public bool swipeOK,isShoot = false, gravityOK = false,gameStart=false;
     public LineRenderer lr;
-    public GameObject banana, shooter, lineRenderer;
+    public UnityEngine.GameObject banana, shooter, lineRenderer;
     public Rigidbody2D rb;
     public float force, cameraSpeed, forceConstant;
 
@@ -20,7 +20,7 @@ public class Shooter : MonoBehaviour
     {
         lr = lineRenderer.GetComponent<LineRenderer>();
         rb = banana.GetComponent<Rigidbody2D>();
-        swipeOK = true;
+        swipeOK = false;
         emptyVector2 = shooter.transform.position;//new Vector3(-500, 0, 0);
     }
 
@@ -29,6 +29,7 @@ public class Shooter : MonoBehaviour
     {
         if (swipeOK == true)
         {
+            Debug.Log("asd");
 			
             if (Input.GetMouseButtonDown(0))
             {
@@ -69,5 +70,13 @@ public class Shooter : MonoBehaviour
             isShoot = false;
             rb.AddForce(slingVector * force* forceConstant*0.1f);
         }
+    }
+    public void SwipeOK()
+    {
+        float q=0;
+        q += Time.deltaTime;
+        swipeOK = true;
+        if (q != 0)
+            return;
     }
 }

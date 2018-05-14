@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class OrbitField : MonoBehaviour {
 
-	public GameObject orbitingObject;
+	public UnityEngine.GameObject orbitingObject;
 	public Ellipse orbitPath;
-	private Rigidbody2D rb;
 	public bool clockwise = true;
 	public bool tmp=true;
 	[Range(0f,1f)]
@@ -49,13 +48,12 @@ public class OrbitField : MonoBehaviour {
 		}
 		print (v2.x);
 		print (v2.y);
-		rb.velocity = v2;
 
 	}
 
 	void Update(){
-		print (rb.velocity.x + "!!!!");
-		print (rb.velocity.y + "@@@@");
+		//print (rb.velocity.x + "!!!!");
+		//print (rb.velocity.y + "@@@@");
 		if (tmp && orbitActive == false && orbitingObject != null && dist (orbitingObject.transform.position, this.transform.position) <= orbitPath.xAxis) {
 			orbitActive = true;
 			tmp = false;
@@ -91,8 +89,6 @@ public class OrbitField : MonoBehaviour {
 
 	void Start()
 	{
-		rb = orbitingObject.GetComponent<Rigidbody2D> ();
-
 	}
 
 	
