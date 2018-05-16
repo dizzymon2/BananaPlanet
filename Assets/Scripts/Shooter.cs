@@ -6,12 +6,16 @@ public class Shooter : MonoBehaviour
     private Vector2 startTouch, currentTouch, endTouch;
     public Vector3 slingVector,emptyVector2, sumVector,temp;
     public Vector3[] arr;
-    public Camera stopCamera;
-    public bool swipeOK,isShoot = false, gravityOK = false,gameStart=false;
-    public LineRenderer lr;
     public UnityEngine.GameObject banana, shooter, lineRenderer;
-    public Rigidbody2D rb;
+
+
+    Rigidbody2D rb;
+    LineRenderer lr;
+
+    public bool swipeOK, isShoot = false, gravityOK = false, gameStart = false;
     public float force, cameraSpeed, forceConstant;
+
+    Rigidbody2D rb2d;
 
 
     // Use this for initialization
@@ -21,44 +25,48 @@ public class Shooter : MonoBehaviour
         lr = lineRenderer.GetComponent<LineRenderer>();
         rb = banana.GetComponent<Rigidbody2D>();
         swipeOK = false;
-        emptyVector2 = shooter.transform.position;//new Vector3(-500, 0, 0);
+        banana.transform.position = shooter.transform.position;
+        emptyVector2 = shooter.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (swipeOK == true)
+        Debug.Log("swipeOK : " + swipeOK);
+        if (swipeOK)
         {
-            Debug.Log("asd");
-			
             if (Input.GetMouseButtonDown(0))
             {
                 gameStart = true;
                 gravityOK = false;
-                startTouch = stopCamera.ScreenToWorldPoint(Input.mousePosition);
+                startTouch = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 temp = banana.transform.position;
-                currentTouch = stopCamera.ScreenToWorldPoint(Input.mousePosition);
+                currentTouch = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
             if (Input.GetMouseButton(0))
             {
+                Debug.Log("button");
                 banana.transform.position = temp;
                 rb.velocity = (Vector2.zero);
                 gravityOK = false;
-                currentTouch = stopCamera.ScreenToWorldPoint(Input.mousePosition);
+                currentTouch = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 slingVector = startTouch - currentTouch;
-                sumVector = banana.transform.position + slingVector * 5;
+                sumVector = banana.transform.position + slingVector * 1000f;
                 Vector3[] arr = {banana.transform.position, sumVector };
                 lr.SetPositions(arr);
             }
 
             else if (Input.GetMouseButtonUp(0))
             {
+
+
+                Debug.Log("up");
                 sumVector = emptyVector2;
                 Vector3[] arr = { banana.transform.position, banana.transform.position };
                 lr.SetPositions(arr);
                 isShoot = true;
                 gravityOK = true;
-                endTouch = stopCamera.ScreenToWorldPoint(Input.mousePosition);
+                endTouch = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 slingVector = startTouch - endTouch;
                 force = Mathf.Sqrt((slingVector.x) * (slingVector.x) + (slingVector.y) * (slingVector.y));
 				swipeOK = false;
@@ -68,15 +76,19 @@ public class Shooter : MonoBehaviour
         if (isShoot)
         {
             isShoot = false;
-            rb.AddForce(slingVector * force* forceConstant*0.1f);
+            rb.AddForce(Vector3.Normalize(slingVector)* forceConstant*1000f); // 안에 *force 곱해주면 당긴 길이에 비례하여 속도
         }
     }
     public void SwipeOK()
     {
-        float q=0;
-        q += Time.deltaTime;
-        swipeOK = true;
-        if (q != 0)
-            return;
+        StartCoroutine(SwipeOKK());
     }
+    IEnumerator SwipeOKK()
+    {
+        yield return new WaitForSeconds(0.1f);
+        swipeOK = !swipeOK;
+    }
+    //진짜 안좋은 코드이지만 당장 해결방법이 쉽게 떠오르지 않아서 임시적으로 만들어 놓은  코드.
+    //원래에는 start버튼을 누르면 bool값을 바꿔서 swipeOK이후가 진행되어야 하는데 버튼을 누르는 순가 mouseButtonUp이 눌려버려서 바로 날라가버린다.
+    //임시 해결 방법 : 코루틴을 써서 1초뒤에 발동시켜서 버튼이 눌리면서 mouseButtonUp이 되는것을 막는다.
 }

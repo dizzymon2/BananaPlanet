@@ -20,16 +20,16 @@ public class Gorilla : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (transform.position == movingPoints[0])
+        if (transform.position == movingPoints[0])                          //시작 지점 도착
         {
             start = true;
             end = false;
-        }//시작 지점 도착
-        if (transform.position == movingPoints[movingPoints.Count - 1])
+        }
+        if (transform.position == movingPoints[movingPoints.Count - 1])     //끝 지점 도착
         {
             start = false;
             end = true;
-        }//끝 지점 도착
+        }
         for (int i = 0; i < movingPoints.Count; i++)
         {
             if(transform.position==movingPoints[i])
@@ -41,17 +41,19 @@ public class Gorilla : MonoBehaviour {
         }
         if (start && !end)
         {
-            if (boolPoints[0])
-                transform.position = Vector3.MoveTowards(transform.position, movingPoints[1], gorillaSpeed);
-            if (boolPoints[1])
-                transform.position = Vector3.MoveTowards(transform.position, movingPoints[2], gorillaSpeed);
+            for(int i=0;i<boolPoints.Count-1;i++)
+            {
+                if(boolPoints[i])
+                    transform.position = Vector3.MoveTowards(transform.position, movingPoints[i+1], gorillaSpeed);
+            }
         }
         if (!start && end)
         {
-            if (boolPoints[2])
-                transform.position = Vector3.MoveTowards(transform.position, movingPoints[1], gorillaSpeed);
-            if (boolPoints[1])
-                transform.position = Vector3.MoveTowards(transform.position, movingPoints[0], gorillaSpeed);
+            for (int i = 1; i < boolPoints.Count; i++)
+            {
+                if (boolPoints[i])
+                    transform.position = Vector3.MoveTowards(transform.position, movingPoints[i - 1], gorillaSpeed);
+            }
         }
     }
 }

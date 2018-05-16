@@ -14,6 +14,7 @@ public class TargetImage : MonoBehaviour, IPointerDownHandler
     public PlanetMaster planetMaster;
     public PlanetDraggable planetDraggable;
     public Text TargetLeftText;
+    public BoolControl_GM gm;
     [HideInInspector]
     public Planet planet;
 
@@ -27,8 +28,12 @@ public class TargetImage : MonoBehaviour, IPointerDownHandler
     }
     public void OnPointerDown(PointerEventData eventData) //이 스크립트가 들어있는 ui가 눌러졌을때 발동한다.
     {
-        if (planetCount < planetNum)
-            CallPlanet(planetId);
+        if(!gm.planetDisposeEnd)
+        {
+            Debug.Log("asdadfasdfasdfasdfasdfasf");
+            if (planetCount < planetNum)
+                CallPlanet(planetId);
+        }
     }
     public void CallPlanet(int planetID)
     {

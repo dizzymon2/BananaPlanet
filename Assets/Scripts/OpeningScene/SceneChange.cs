@@ -8,7 +8,6 @@ public class SceneChange : MonoBehaviour
 {
     public void Update()
     {
-        Screen.orientation = ScreenOrientation.Portrait;
     }
     public void ChangeScene(string scenename)
     {
