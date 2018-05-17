@@ -286,13 +286,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BananaCamManager.cs" />
     <Compile Include="Assets\Scripts\BoolControl_GM.cs" />
     <Compile Include="Assets\Scripts\GravityZone.cs" />
     <Compile Include="Assets\Scripts\Obstacles\Comet.cs" />
     <Compile Include="Assets\Scripts\Obstacles\Gorilla.cs" />
     <Compile Include="Assets\Scripts\Obstacles\GorillaRenderer.cs" />
     <Compile Include="Assets\Scripts\OpeningScene\isPage.cs" />
+    <Compile Include="Assets\Scripts\OpeningScene\MessageBouncer.cs" />
+    <Compile Include="Assets\Scripts\OpeningScene\PlanetRotator.cs" />
+    <Compile Include="Assets\Scripts\OpeningScene\RotateBanana.cs" />
     <Compile Include="Assets\Scripts\OpeningScene\SceneChange.cs" />
+    <Compile Include="Assets\Scripts\OpeningScene\StageManager.cs" />
     <Compile Include="Assets\Scripts\OpeningScene\StoryManager.cs" />
     <Compile Include="Assets\Scripts\orbiting_scripts\Ellipse.cs" />
     <Compile Include="Assets\Scripts\orbiting_scripts\EllipseRenderer.cs" />

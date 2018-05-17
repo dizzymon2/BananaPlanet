@@ -11,6 +11,7 @@ TagManager:
   - Planet2
   - Planet3
   - MovablePlanet
+  - PlanetRotator
   layers:
   - Default
   - TransparentFX

@@ -50,16 +50,19 @@ public class Shooter : MonoBehaviour
                 rb.velocity = (Vector2.zero);
                 gravityOK = false;
                 currentTouch = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Debug.Log("slingVector : " + slingVector.magnitude);
                 slingVector = startTouch - currentTouch;
-                sumVector = banana.transform.position + slingVector * 1000f;
-                Vector3[] arr = {banana.transform.position, sumVector };
-                lr.SetPositions(arr);
+                if(slingVector.magnitude>500f)
+                {
+                    banana.transform.up = slingVector;
+                    sumVector = banana.transform.position + slingVector * 1000f;
+                    Vector3[] arr = { banana.transform.position, sumVector };
+                    lr.SetPositions(arr);
+                }
             }
 
             else if (Input.GetMouseButtonUp(0))
             {
-
-
                 Debug.Log("up");
                 sumVector = emptyVector2;
                 Vector3[] arr = { banana.transform.position, banana.transform.position };
@@ -70,6 +73,7 @@ public class Shooter : MonoBehaviour
                 slingVector = startTouch - endTouch;
                 force = Mathf.Sqrt((slingVector.x) * (slingVector.x) + (slingVector.y) * (slingVector.y));
 				swipeOK = false;
+                StartCoroutine(BananaGetBig());
             }
         }
 
@@ -87,6 +91,15 @@ public class Shooter : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         swipeOK = !swipeOK;
+    }
+    IEnumerator BananaGetBig()
+    {
+        while(banana.transform.localScale.x<50)
+        {
+            banana.transform.localScale += new Vector3(2f, 2f, 2f);
+            yield return null;
+        }
+        StopCoroutine(BananaGetBig());
     }
     //진짜 안좋은 코드이지만 당장 해결방법이 쉽게 떠오르지 않아서 임시적으로 만들어 놓은  코드.
     //원래에는 start버튼을 누르면 bool값을 바꿔서 swipeOK이후가 진행되어야 하는데 버튼을 누르는 순가 mouseButtonUp이 눌려버려서 바로 날라가버린다.

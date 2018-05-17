@@ -15,7 +15,6 @@ public class Player: MonoBehaviour
     {
         transform.position = new Vector3(banana_X, banana_Y, banana_Z);
         GetComponent<Rigidbody2D>().gravityScale = 0;
-        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         GetComponent<BoxCollider2D>();
         rb2D  =  GetComponent<Rigidbody2D>();
     }
@@ -43,6 +42,7 @@ public class Player: MonoBehaviour
     {
         rb2D.velocity = Vector2.zero;
         transform.position = new Vector3(banana_X, banana_Y, banana_Z);
+        transform.localScale = new Vector3(1, 1, 1);
         shooter.swipeOK = true;
     }
     IEnumerator MessageManager()
